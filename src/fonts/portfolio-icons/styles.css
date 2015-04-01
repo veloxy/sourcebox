@@ -47,3 +47,12 @@
 .icon-github:before {
   content: "d";
 }
+.icon-wrench:before {
+  content: "b";
+}
+.icon-code:before {
+  content: "e";
+}
+.icon-crop:before {
+  content: "f";
+}

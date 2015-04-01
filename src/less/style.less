@@ -56,3 +56,75 @@
 @import "custom/type.less";
 @import "custom/navbar.less";
 @import "custom/header.less";
+@import "custom/buttons.less";
+@import "custom/labels.less";
+@import "custom/cta.less";
+
+.skills {
+  .container();
+
+  font-size: 20px;
+  padding: 80px 0;
+
+  .row {
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+
+  .table {
+    tr {
+      &:first-child td {
+        border-top: none;
+      }
+      .title {
+        text-align: right;
+        vertical-align: middle;
+        min-width: 200px;
+      }
+      .skills {
+        line-height: 34px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.info {
+  margin-top: -30px;
+  padding: 110px 0 80px 0;
+  background-color: #F7F7F7;
+
+  .intro {
+    text-align: center;
+    width: 100%;
+    font-size: 40px;
+    margin-bottom: 80px;
+  }
+
+  .item {
+    .make-md-column(6);
+
+    .image {
+      .make-md-column(3);
+      margin-top: 50px;
+      font-size: 100px;
+      color: @primary-text-color-secondary;
+      text-align: center;
+    }
+
+    .text {
+      .make-md-column(9);
+      font-size: 20px;
+
+      h3 {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .row {
+  .container();
+    margin-bottom: 60px;
+  }
+}
