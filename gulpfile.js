@@ -1,15 +1,17 @@
 /**
  * Gulp packages
  */
-var gulp     = require('gulp');
-var prefix   = require('gulp-autoprefixer');
-var plumber  = require('gulp-plumber');
-var less     = require('gulp-less');
-var uglify   = require('gulp-uglify');
-var concat   = require('gulp-concat');
-var clean    = require('gulp-clean');
-var sequence = require('gulp-sequence');
-var rename   = require('gulp-rename');
+var gulp      = require('gulp');
+var prefix    = require('gulp-autoprefixer');
+var plumber   = require('gulp-plumber');
+var less      = require('gulp-less');
+var uglify    = require('gulp-uglify');
+var concat    = require('gulp-concat');
+var clean     = require('gulp-clean');
+var sequence  = require('gulp-sequence');
+var rename    = require('gulp-rename');
+var uncss     = require('gulp-uncss');
+var minifyCSS = require('gulp-minify-css');
 
 /**
  * Source files
@@ -45,6 +47,10 @@ gulp.task('less', function() {
     .pipe(less())
     .pipe(prefix('last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR'))
     .pipe(rename('style.min.css'))
+    .pipe(uncss({
+        html: ['build/index.html']
+    }))
+    .pipe(minifyCSS())
     .pipe(gulp.dest(dest.css))
 });
 
@@ -54,7 +60,7 @@ gulp.task('less', function() {
 gulp.task('js', function() {
   return gulp.src(src.js)
     .pipe(concat('main.min.js'))
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest(dest.js))
 });
 
@@ -86,12 +92,12 @@ gulp.task('cleanup', function () {
  * Build the project
  */
 gulp.task('build', function(cb) {
-  return sequence('cleanup', 'fonts', 'less', 'js', 'html', cb)
+  return sequence('cleanup', 'html', 'fonts', 'less', 'js', cb)
 });
 
 /**
  * Watch file changes and build project
  */
 gulp.task('default', function () {
-  return gulp.watch([src.less, src.js, src.html], ['build']);
+  return gulp.watch([src.html, src.less, src.js], ['build']);
 });
