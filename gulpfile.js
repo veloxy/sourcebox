@@ -10,7 +10,6 @@ var concat    = require('gulp-concat');
 var clean     = require('gulp-clean');
 var sequence  = require('gulp-sequence');
 var rename    = require('gulp-rename');
-var uncss     = require('gulp-uncss');
 var minifyCSS = require('gulp-minify-css');
 
 /**
@@ -47,9 +46,6 @@ gulp.task('less', function() {
     .pipe(less())
     .pipe(prefix('last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR'))
     .pipe(rename('style.min.css'))
-    .pipe(uncss({
-        html: ['build/index.html']
-    }))
     .pipe(minifyCSS())
     .pipe(gulp.dest(dest.css))
 });
