@@ -59,6 +59,7 @@
 @import "custom/buttons.less";
 @import "custom/labels.less";
 @import "custom/cta.less";
+@import "custom/footer.less";
 
 .skills {
   .container();
@@ -124,5 +125,47 @@
   .row {
   .container();
     margin-bottom: 60px;
+  }
+}
+
+@media (max-width: @screen-sm-min) {
+  .info {
+    .item {
+      .make-xs-column(12);
+      .image {
+        display: none;
+      }
+      .text {
+        .make-xs-column(12)
+      }
+    }
+  }
+
+  .skills {
+    .table {
+      tr {
+        .title {
+          min-width: 50px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: @screen-md-min) {
+  .info {
+    .item {
+      .make-sm-column(12);
+
+      margin-bottom: 20px;
+
+      .image {
+        .make-sm-column(3);
+      }
+      .text {
+        .make-sm-column(9);
+      }
+    }
   }
 }
