@@ -19,6 +19,8 @@ var src = {
   js: [
     'src/js/bootstrap/collapse.js',
     'src/js/bootstrap/dropdown.js',
+    'src/js/bootstrap/tooltip.js',
+    'src/js/main.js',
   ],
   fonts: [
     'src/fonts/**/*'
