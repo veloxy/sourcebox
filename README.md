@@ -1,4 +1,4 @@
-# Kevin Vandenborne's Website V2
+# Sourcebox (Kevin Vandenborne's Website)
 
 This is the source code for my personal website, you can look around but you can not copy. This is only for educational use.
 
