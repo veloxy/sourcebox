@@ -19,7 +19,3 @@ Use Gulp to build and watch changes:
 - `gulp fonts` to move fonts to build directory
 - `gulp html` to move html files to build directory
 - `gulp cleanup` to remove build directory
-
-## Todo
-
-- [ ] Clean up unused assets
