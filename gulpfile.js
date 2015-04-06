@@ -100,5 +100,7 @@ gulp.task('build', function(cb) {
  * Watch file changes and build project
  */
 gulp.task('default', function () {
-  return gulp.watch([src.html, src.less, src.js], ['build']);
+  gulp.watch([src.html], ['html']);
+  gulp.watch([src.less], ['less']);
+  gulp.watch([src.js], ['js']);
 });
