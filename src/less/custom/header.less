@@ -1,6 +1,7 @@
 .header-container {
   background-color: @primary-color;
   position: relative;
+  min-height: 537px;
 
   .header-text {
     position: absolute;
@@ -19,12 +20,19 @@
       margin-bottom: 30px;
       font-size: 60px;
       font-family: @font-name-header;
+      animation: fadein 1s forwards;
+      animation-delay: .2s;
+      opacity: 0;
     }
 
     p {
       color: @primary-text-color-secondary;
       font-size: 24px;
       margin-top: 30px;
+      opacity: 0;
+
+      animation: fadein 1s forwards;
+      animation-delay: .6s;
 
       strong {
         color: @primary-text-color
