@@ -10,7 +10,7 @@ var height,
     material,
     timer = 0,
     animationEnabled = true,
-    debug = true,
+    debug = false,
     stats;
 
 Header.render = function() {
