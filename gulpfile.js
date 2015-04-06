@@ -17,9 +17,13 @@ var minifyCSS = require('gulp-minify-css');
  */
 var src = {
   js: [
+    'src/js/libs/jquery.min.js',
     'src/js/bootstrap/collapse.js',
     'src/js/bootstrap/dropdown.js',
     'src/js/bootstrap/tooltip.js',
+    // 'src/js/libs/three.control.js',
+    'src/js/libs/three.min.js',
+    'src/js/modules/header.js',
     'src/js/main.js',
   ],
   fonts: [
