@@ -1,0 +1,13 @@
+# Site settings
+title: Sourcebox
+email: kevin.vandenborne@gmail.com
+description: Kevin Vandenborne's Personal Website
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://sourcebox.be" # the base hostname & protocol for your site
+twitter_username: Veloxy
+github_username:  veloxy
+keep_files: ['js', 'css', 'fonts']
+highlighter: pygments
+
+# Build settings
+markdown: kramdown
