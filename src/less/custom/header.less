@@ -1,15 +1,16 @@
 .header-container {
   background-color: @primary-color;
   position: relative;
-  min-height: 537px;
+
+  canvas {
+    position: absolute;
+  }
 
   .header-text {
-    position: absolute;
+    width: 100%;
     color: @primary-text-color;
 
     padding: 40px 0 100px;
-    transform: translateX(-50%);
-    margin: auto 50%;
 
     .container {
       position: relative;
@@ -17,7 +18,7 @@
     }
 
     h1 {
-      margin-bottom: 30px;
+      margin-bottom: 60px;
       font-size: 60px;
       font-family: @font-name-header;
       animation: fadein 1s forwards;
@@ -53,8 +54,6 @@
 
 @media (max-width: @screen-sm-min) {
   .header-container .header-text {
-    transform: translateX(0%);
-    margin: auto 0;
     h1 {
       font-size: 40px;
     }

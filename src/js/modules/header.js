@@ -63,10 +63,11 @@ Header.renderer = function($target) {
       document.getElementsByTagName('canvas')[0].parentNode.appendChild(stats.domElement)
     }
   } else {
-    document.getElementById($target).appendChild(renderer.domElement);
+    var $target = document.getElementById($target);
+    $target.insertBefore(renderer.domElement, $target.firstChild);
 
     if (debug) {
-      document.getElementById($target).appendChild(stats.domElement)
+      $target.appendChild(stats.domElement)
     }
   }
 

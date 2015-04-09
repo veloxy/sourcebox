@@ -5,10 +5,13 @@ This is the source code for my personal website, you can look around but you can
 ## Requirements
 
 - Node Package Manager (NPM)
+- Gulp (`sudo npm install gulp --global`)
+- Ruby, RubyGems and bundler
 
 ## Installation
 
 Run `npm install` to install required node modules.
+Run `bundler update` to install required gems.
 
 Use Gulp to build and watch changes:
 
