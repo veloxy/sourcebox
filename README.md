@@ -11,7 +11,7 @@ This is the source code for my personal website, you can look around but you can
 ## Installation
 
 Run `npm install` to install required node modules.
-Run `bundler` to install required gems.
+Run `bundler update` to install required gems.
 
 Use Gulp to build and watch changes:
 
