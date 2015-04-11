@@ -1,3 +1,5 @@
 build
 node_modules
 npm-debug.log
+src/node_modules
+src/themes/sourcebox/source/
