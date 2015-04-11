@@ -9,7 +9,7 @@
 {{ config.title }}
 </title>
 
-<link href="css/style.min.css?v=123" rel="stylesheet">
+<link href="/css/style.min.css?v=123" rel="stylesheet">
 
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
