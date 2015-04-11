@@ -26,9 +26,6 @@
     "gulp-rename": "~1.2.0",
     "gulp-sequence": "~0.3.2",
     "gulp-minify-css": "~1.0.0",
-    "gulp-jekyll": "0.0.0"
-  },
-  "dependencies": {
     "gulp-util": "^3.0.4"
   }
 }

@@ -11,7 +11,6 @@ var clean     = require('gulp-clean');
 var sequence  = require('gulp-sequence');
 var rename    = require('gulp-rename');
 var minifyCSS = require('gulp-minify-css');
-var cp        = require('child_process');
 
 /**
  * Source files
@@ -39,10 +38,10 @@ var src = {
  * Destination folders
  */
 var dest = {
-  css: 'build/css/',
-  js: 'build/js/',
-  fonts: 'build/fonts/',
-  path: 'build'
+  css: 'src/themes/sourcebox/source/css/',
+  js: 'src/themes/sourcebox/source/js/',
+  fonts: 'src/themes/sourcebox/source/fonts/',
+  path: 'src/themes/sourcebox'
 }
 
 /**
@@ -87,23 +86,22 @@ gulp.task('html', function() {
 /**
  * Clean up destination directy
  */
-gulp.task('cleanup', function () {
-  return gulp.src(dest.path, {read: false})
-    .pipe(clean());
-});
+// gulp.task('cleanup', function () {
+//   return gulp.src(dest.path, {read: false})
+//     .pipe(clean());
+// });
 
 /**
  * Build the project
  */
 gulp.task('build', function(cb) {
-  return sequence('cleanup', 'html', 'fonts', 'less', 'js', cb)
+  return sequence('fonts', 'less', 'js', cb)
 });
 
 /**
  * Watch file changes and build project
  */
 gulp.task('default', function () {
-  gulp.watch([src.html], ['html']);
   gulp.watch([src.less], ['less']);
   gulp.watch([src.js], ['js']);
 });

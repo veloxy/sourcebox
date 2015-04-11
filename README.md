@@ -6,12 +6,14 @@ This is the source code for my personal website, you can look around but you can
 
 - Node Package Manager (NPM)
 - Gulp (`sudo npm install gulp --global`)
-- Ruby, RubyGems and bundler
+- Hexo (`sudo npm install hexo --global`)
 
 ## Installation
 
+
+### Assets
+
 Run `npm install` to install required node modules.
-Run `bundler update` to install required gems.
 
 Use Gulp to build and watch changes:
 
@@ -20,5 +22,12 @@ Use Gulp to build and watch changes:
 - `gulp build` to manually start the build process
 - `gulp less` to compile less into css.
 - `gulp fonts` to move fonts to build directory
-- `gulp html` to move html files to build directory
 - `gulp cleanup` to remove build directory
+
+### Site
+
+Run `npm install` in src directory to install required node modules for hexo.
+
+Run `hexo generate` in the src directory to generate html files.
+
+Run `hexo server` in the src directory to launch a webserver.
