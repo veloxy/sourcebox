@@ -1,7 +1,6 @@
 /**
  * Gulp packages
  */
-var shell     = require('gulp-shell');
 var gulp      = require('gulp');
 var prefix    = require('gulp-autoprefixer');
 var plumber   = require('gulp-plumber');
@@ -12,7 +11,6 @@ var clean     = require('gulp-clean');
 var sequence  = require('gulp-sequence');
 var rename    = require('gulp-rename');
 var minifyCSS = require('gulp-minify-css');
-var cp        = require('child_process');
 
 /**
  * Source files
@@ -104,7 +102,6 @@ gulp.task('build', function(cb) {
  * Watch file changes and build project
  */
 gulp.task('default', function () {
-  // gulp.watch([src.html], ['html']);
   gulp.watch([src.less], ['less']);
   gulp.watch([src.js], ['js']);
 });

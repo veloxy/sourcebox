@@ -26,16 +26,6 @@
     "gulp-rename": "~1.2.0",
     "gulp-sequence": "~0.3.2",
     "gulp-minify-css": "~1.0.0",
-    "gulp-jekyll": "0.0.0",
-    "gulp-util": "^3.0.4",
-    "hexo": "^3.0.0",
-    "hexo-generator-archive": "^0.1.0",
-    "hexo-generator-category": "^0.1.0",
-    "hexo-generator-index": "^0.1.0",
-    "hexo-generator-tag": "^0.1.0",
-    "hexo-renderer-stylus": "^0.2.0",
-    "hexo-renderer-marked": "^0.2.4",
-    "hexo-server": "^0.1.2",
-    "gulp-load-plugins": "~0.10.0"
+    "gulp-util": "^3.0.4"
   }
 }
