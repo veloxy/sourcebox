@@ -31,3 +31,11 @@ Run `npm install` in src directory to install required node modules for hexo.
 Run `hexo generate` in the src directory to generate html files.
 
 Run `hexo server` in the src directory to launch a webserver.
+
+## Todo
+
+- [ ] Footer
+- [ ] Layout for blog and blog posts
+- [ ] Do something with the contact button
+- [ ] Try to put hexo into gulp
+- [ ] Better content
