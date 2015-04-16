@@ -41,3 +41,4 @@ Run `hexo server` in the src directory to launch a webserver.
 - [ ] Do something with the contact button
 - [ ] Try to put hexo into gulp
 - [ ] Better content
+- [ ] Convert header.js to ES6 using [traceur.js](https://github.com/google/traceur-compiler)
