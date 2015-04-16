@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/veloxy/Sourcebox/badges/gpa.svg)](https://codeclimate.com/github/veloxy/Sourcebox)
+
 # Sourcebox (Kevin Vandenborne's Website)
 
 This is the source code for my personal website, you can look around but you can not copy. This is only for educational use.
