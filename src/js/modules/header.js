@@ -4,20 +4,19 @@ var height,
     width,
     scene,
     camera,
-    controls,
     renderer,
     mesh,
-    material,
     timer = 0,
     animationEnabled = true,
     debug = false,
+    geometry,
     stats;
 
 Header.render = function() {
   timer = timer + 0.0005;
   mesh.rotation.z = timer;
   renderer.render(scene, camera);
-}
+};
 
 Header.geometry = function($width, $height, $segmentWith, $segmentHeight) {
   geometry = new THREE.PlaneGeometry($width, $height, $segmentWith, $segmentHeight);
@@ -39,7 +38,7 @@ Header.geometry = function($width, $height, $segmentWith, $segmentHeight) {
   geometry.computeFaceNormals();
   geometry.computeVertexNormals();
   geometry.normalsNeedUpdate = true;
-}
+};
 
 Header.mesh = function() {
   mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({
@@ -47,7 +46,7 @@ Header.mesh = function() {
   }));
 
   scene.add(mesh);
-}
+};
 
 Header.renderer = function($target) {
   if (!renderer) {
@@ -60,23 +59,23 @@ Header.renderer = function($target) {
     document.getElementsByTagName('canvas')[0].parentNode.replaceChild(renderer.domElement, document.getElementsByTagName('canvas')[0]);
 
     if (debug) {
-      document.getElementsByTagName('canvas')[0].parentNode.appendChild(stats.domElement)
+      document.getElementsByTagName('canvas')[0].parentNode.appendChild(stats.domElement);
     }
   } else {
-    var $target = document.getElementById($target);
+    $target = document.getElementById($target);
     $target.insertBefore(renderer.domElement, $target.firstChild);
 
     if (debug) {
-      $target.appendChild(stats.domElement)
+      $target.appendChild(stats.domElement);
     }
   }
 
   return renderer;
-}
+};
 
 Header.resize = function() {
   Header.init();
-}
+};
 
 Header.camera = function($fieldOfView, $aspect, $near, $far) {
   camera = new THREE.PerspectiveCamera($fieldOfView, $aspect, $near, $far);
@@ -91,7 +90,7 @@ Header.camera = function($fieldOfView, $aspect, $near, $far) {
   camera.updateProjectionMatrix();
 
   return camera;
-}
+};
 
 Header.controls = function() {
   var $controls = new THREE.TrackballControls(camera);
@@ -111,7 +110,7 @@ Header.controls = function() {
   $controls.addEventListener('change', Header.render);
 
   return $controls;
-}
+};
 
 Header.scene = function() {
   scene = new THREE.Scene();
@@ -119,12 +118,12 @@ Header.scene = function() {
   scene.fog = new THREE.FogExp2(0x2e2b37, 0.003);
 
   return scene;
-}
+};
 
 Header.lights = function() {
   var ambientLight = new THREE.AmbientLight(0x2e2b37);
 
-  var pointLight = new THREE.PointLight(0x9456c6, .8, 200);
+  var pointLight = new THREE.PointLight(0x9456c6, 0.8, 200);
   pointLight.position.set(20, 50, 50);
 
   var dirLight = new THREE.DirectionalLight(0xdfe8ef, 0.1);
@@ -133,12 +132,12 @@ Header.lights = function() {
   scene.add(ambientLight);
   scene.add(dirLight);
   scene.add(pointLight);
-}
+};
 
 Header.calculateSize = function() {
   width  = document.getElementById('header').offsetWidth;
   height = $('.header-text').outerHeight();
-}
+};
 
 Header.animate = function() {
   if (animationEnabled) {
@@ -149,7 +148,7 @@ Header.animate = function() {
     }
   }
   // controls.update();
-}
+};
 
 Header.init = function() {
   timer = 0;
@@ -174,7 +173,7 @@ Header.init = function() {
   window.addEventListener('resize', Header.resize, false);
 
   Header.render();
-}
+};
 
 $(window).on('scrollstart', function() {
     animationEnabled = false;
