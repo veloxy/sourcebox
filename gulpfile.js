@@ -11,8 +11,6 @@ var clean     = require('gulp-clean');
 var sequence  = require('gulp-sequence');
 var rename    = require('gulp-rename');
 var minifyCSS = require('gulp-minify-css');
-var cp        = require('child_process');
-var jekyll    = require('gulp-jekyll');
 
 /**
  * Source files
@@ -32,9 +30,6 @@ var src = {
   fonts: [
     'src/fonts/**/*'
   ],
-  jekyll: [
-    'src/jekyll',
-  ],
   less: 'src/less/**/*.less',
   html: 'src/**/*.html'
 };
@@ -43,10 +38,10 @@ var src = {
  * Destination folders
  */
 var dest = {
-  css: 'build/css/',
-  js: 'build/js/',
-  fonts: 'build/fonts/',
-  path: 'build'
+  css: 'src/themes/sourcebox/source/css/',
+  js: 'src/themes/sourcebox/source/js/',
+  fonts: 'src/themes/sourcebox/source/fonts/',
+  path: 'src/themes/sourcebox'
 }
 
 /**
@@ -81,37 +76,6 @@ gulp.task('fonts', function() {
 });
 
 /**
- * Move fonts to destination directory
- */
-// gulp.task('jekyll:build', function() {
-//   return gulp.src(src.jekyll)
-//     .pipe(gulp.dest(dest.path));
-// });
-
-/**
- * Move fonts to destination directory
- */
-gulp.task('jekyll', function() {
-  return cp.spawn('bundle', [
-    'exec', 'jekyll', 'serve', '--source=' + src.jekyll, '--destination=' + dest.path, '--force_polling'
-  ], { stdio: 'inherit' });
-// var jekyll = process.platform === "win32" ? "jekyll" : "jekyll";
-// return cp.spawn(jekyll, ['build', '--source=' + src.jekyll, '--destination=' + dest.path], {stdio: 'inherit'}).on('close', function(){});
-});
-
-gulp.task('jekyll', function () {
-    gulp.src(src.jekyll)
-        .pipe(jekyll({
-            source: src.jekyll,
-            destination: dest.path,
-            bundleExec: true
-        }))
-        .pipe(gulp.dest(dest.path));
-});
-
-
-
-/**
  * Move html files to destination directory
  */
 gulp.task('html', function() {
@@ -122,23 +86,22 @@ gulp.task('html', function() {
 /**
  * Clean up destination directy
  */
-gulp.task('cleanup', function () {
-  return gulp.src(dest.path, {read: false})
-    .pipe(clean());
-});
+// gulp.task('cleanup', function () {
+//   return gulp.src(dest.path, {read: false})
+//     .pipe(clean());
+// });
 
 /**
  * Build the project
  */
 gulp.task('build', function(cb) {
-  return sequence('cleanup'/*, 'html'*/, 'fonts', 'less', 'js', 'jekyll', cb)
+  return sequence('fonts', 'less', 'js', cb)
 });
 
 /**
  * Watch file changes and build project
  */
 gulp.task('default', function () {
-  // gulp.watch([src.html], ['html']);
   gulp.watch([src.less], ['less']);
   gulp.watch([src.js], ['js']);
 });
