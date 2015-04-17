@@ -1,11 +1,11 @@
 {
   "name": "Portfolio",
-  "version": "0.0.1",
-  "description": "My personal portfolio",
+  "version": "0.2.4",
+  "description": "My personal website named Sourcebox",
   "main": "public/index.html",
   "repository": {
     "type": "git",
-    "url": "git@github.com:veloxy/Personal-Website.git"
+    "url": "https://github.com/veloxy/Sourcebox"
   },
   "keywords": [
     "gulp",
@@ -14,7 +14,7 @@
     "images"
   ],
   "author": "Kevin Vandenborne",
-  "homepage": "",
+  "homepage": "http://sourcebox.be",
   "devDependencies": {
     "gulp": "^3.8.8",
     "gulp-autoprefixer": "^1.0.1",
