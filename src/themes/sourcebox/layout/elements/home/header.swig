@@ -1,4 +1,4 @@
-<div class="header-container" id="header">
+<div class="header-container fallback" id="header">
   <div class="header-text">
     <div class="container">
       <h1>Hello, I'm <strong>Kevin Vandenborne</strong>.<br>I'm a <strong>web developer</strong> passionate about everything related to web.</h1>

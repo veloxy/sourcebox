@@ -31,7 +31,8 @@ var src = {
     'src/fonts/**/*'
   ],
   less: 'src/less/**/*.less',
-  html: 'src/**/*.html'
+  html: 'src/**/*.html',
+  img: 'src/img/*'
 };
 
 /**
@@ -41,6 +42,7 @@ var dest = {
   css: 'src/themes/sourcebox/source/css/',
   js: 'src/themes/sourcebox/source/js/',
   fonts: 'src/themes/sourcebox/source/fonts/',
+  img: 'src/themes/sourcebox/source/img/',
   path: 'src/themes/sourcebox'
 }
 
@@ -76,6 +78,15 @@ gulp.task('fonts', function() {
 });
 
 /**
+ * Move images to destination directory
+ */
+gulp.task('images', function() {
+  return gulp.src(src.img)
+    .pipe(gulp.dest(dest.img));
+});
+
+
+/**
  * Move html files to destination directory
  */
 gulp.task('html', function() {
@@ -95,7 +106,7 @@ gulp.task('html', function() {
  * Build the project
  */
 gulp.task('build', function(cb) {
-  return sequence('fonts', 'less', 'js', cb)
+  return sequence('fonts', 'less', 'js', 'img', cb)
 });
 
 /**
@@ -104,4 +115,5 @@ gulp.task('build', function(cb) {
 gulp.task('default', function () {
   gulp.watch([src.less], ['less']);
   gulp.watch([src.js], ['js']);
+  gulp.watch([src.img], ['img']);
 });
