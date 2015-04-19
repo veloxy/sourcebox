@@ -49,28 +49,32 @@ Header.mesh = function() {
 };
 
 Header.renderer = function($target) {
-  if (!renderer) {
-    renderer = new THREE.WebGLRenderer({antialiasing: true, alpha: true});
+  try {
+    if (!renderer) {
+      renderer = new THREE.WebGLRenderer({antialiasing: true, alpha: true});
+    }
+
+    renderer.setSize(width, height);
+
+    if (document.getElementsByTagName('canvas')[0]) {
+      document.getElementsByTagName('canvas')[0].parentNode.replaceChild(renderer.domElement, document.getElementsByTagName('canvas')[0]);
+
+      if (debug) {
+        document.getElementsByTagName('canvas')[0].parentNode.appendChild(stats.domElement);
+      }
+    } else {
+      $target = document.getElementById($target);
+      $target.insertBefore(renderer.domElement, $target.firstChild);
+
+      if (debug) {
+        $target.appendChild(stats.domElement);
+      }
+    }
+  } catch(exception) {
+    return false;
   }
 
-  renderer.setSize(width, height);
-
-  if (document.getElementsByTagName('canvas')[0]) {
-    document.getElementsByTagName('canvas')[0].parentNode.replaceChild(renderer.domElement, document.getElementsByTagName('canvas')[0]);
-
-    if (debug) {
-      document.getElementsByTagName('canvas')[0].parentNode.appendChild(stats.domElement);
-    }
-  } else {
-    $target = document.getElementById($target);
-    $target.insertBefore(renderer.domElement, $target.firstChild);
-
-    if (debug) {
-      $target.appendChild(stats.domElement);
-    }
-  }
-
-  return renderer;
+  return true;
 };
 
 Header.resize = function() {
@@ -150,7 +154,20 @@ Header.animate = function() {
   // controls.update();
 };
 
+Header.webGLAvailable = function() {
+  if (!window.WebGLRenderingContext) {
+    // the browser doesn't even know what WebGL is
+    return false;
+  }
+  return true;
+}
+
 Header.init = function() {
+
+  if (!Header.webGLAvailable()) {
+    return false;
+  }
+
   timer = 0;
 
   if (debug) {
@@ -164,7 +181,11 @@ Header.init = function() {
 
   Header.camera(40, width/height, 0.1, 1000);
   // controls = Header.controls(camera);
-  Header.renderer('header');
+
+  if (!Header.renderer('header')) {
+    return false;
+  }
+
   Header.geometry(2000, 1000, 50, 50);
   Header.mesh();
 
@@ -172,17 +193,20 @@ Header.init = function() {
 
   window.addEventListener('resize', Header.resize, false);
 
-  Header.render();
+  Header.render()
+
+  return true;
 };
 
-$(window).on('scrollstart', function() {
-    animationEnabled = false;
-});
+if (Header.init()) {
+  $(window).on('scrollstart', function() {
+      animationEnabled = false;
+  });
 
-$(window).on('scrollstop', function() {
-  animationEnabled = true;
+  $(window).on('scrollstop', function() {
+    animationEnabled = true;
+    Header.animate();
+  });
+
   Header.animate();
-});
-
-Header.init();
-Header.animate();
+}
