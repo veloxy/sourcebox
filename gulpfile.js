@@ -106,7 +106,7 @@ gulp.task('html', function() {
  * Build the project
  */
 gulp.task('build', function(cb) {
-  return sequence('fonts', 'less', 'js', 'img', cb)
+  return sequence('fonts', 'less', 'js', 'images', cb)
 });
 
 /**
@@ -115,5 +115,5 @@ gulp.task('build', function(cb) {
 gulp.task('default', function () {
   gulp.watch([src.less], ['less']);
   gulp.watch([src.js], ['js']);
-  gulp.watch([src.img], ['img']);
+  gulp.watch([src.img], ['images']);
 });
