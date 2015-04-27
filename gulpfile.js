@@ -122,10 +122,17 @@ gulp.task('build', function(cb) {
 });
 
 /**
- * Watch file changes and build project
+ * Watch the files and build where needed
  */
-gulp.task('default', function () {
+gulp.task('watch', function() {
   gulp.watch([src.less], ['less']);
   gulp.watch([src.js], ['js']);
   gulp.watch([src.img], ['images']);
+});
+
+/**
+ * Watch file changes and build project
+ */
+gulp.task('default', function(cb) {
+  return sequence('build', 'watch', cb);
 });
