@@ -118,7 +118,7 @@ gulp.task('html', function() {
  * Build the project
  */
 gulp.task('build', function(cb) {
-  return sequence('fonts', 'less', 'js', 'images', cb)
+  return sequence('fonts', 'copy-bootstrap', 'less', 'js', 'images', cb)
 });
 
 /**
