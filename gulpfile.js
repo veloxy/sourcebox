@@ -115,14 +115,6 @@ gulp.task('html', function() {
 });
 
 /**
- * Clean up destination directy
- */
-// gulp.task('cleanup', function () {
-//   return gulp.src(dest.path, {read: false})
-//     .pipe(clean());
-// });
-
-/**
  * Build the project
  */
 gulp.task('build', function(cb) {
