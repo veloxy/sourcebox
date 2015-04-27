@@ -34,12 +34,3 @@ Run `npm install` in src directory to install required node modules for hexo.
 Run `hexo generate` in the src directory to generate html files.
 
 Run `hexo server` in the src directory to launch a webserver.
-
-## Todo
-
-- [ ] Footer
-- [ ] Layout for blog and blog posts
-- [ ] Do something with the contact button (Perhaps fill entire screen with the button color and display a contact form, ~~google forms~~?)
-- [ ] Try to put hexo into gulp
-- [ ] Better content
-- [ ] Convert header.js to ES6 using [traceur.js](https://github.com/google/traceur-compiler)
