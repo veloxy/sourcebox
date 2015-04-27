@@ -193,7 +193,7 @@ Header.init = function() {
 
   window.addEventListener('resize', Header.resize, false);
 
-  Header.render()
+  Header.render();
 
   return true;
 };
@@ -209,4 +209,4 @@ if (Header.init()) {
   });
 
   Header.animate();
-}
+};

@@ -95,7 +95,7 @@ gulp.task('copy-bootstrap', function() {
   for (var key in bootstrap) {
     var folder = bootstrap[key];
     gulp.src(folder.src).pipe(gulp.dest(folder.dest));
-  };
+  }
 });
 
 /**
