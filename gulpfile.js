@@ -46,6 +46,17 @@ var dest = {
   path: 'src/themes/sourcebox'
 }
 
+var bootstrap = {
+  js: {
+    src: 'node_modules/bootstrap/js/**/*.js',
+    dest: 'src/js/bootstrap/'
+  },
+  less: {
+    src: 'node_modules/bootstrap/less/**/*.less',
+    dest: 'src/less/bootstrap/'
+  }
+}
+
 /**
  * Compile less files
  */
@@ -78,11 +89,20 @@ gulp.task('fonts', function() {
 });
 
 /**
+ * Move fonts to destination directory
+ */
+gulp.task('copy-bootstrap', function() {
+  for (var key in bootstrap) {
+    var folder = bootstrap[key];
+    gulp.src(folder.src).pipe(gulp.dest(folder.dest));
+  }
+});
+
+/**
  * Move images to destination directory
  */
 gulp.task('images', function() {
-  return gulp.src(src.img)
-    .pipe(gulp.dest(dest.img));
+  return gulp.src(src.img).pipe(gulp.dest(dest.img));
 });
 
 
