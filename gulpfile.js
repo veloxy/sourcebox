@@ -44,7 +44,7 @@ var dest = {
   fonts: 'src/themes/sourcebox/source/fonts/',
   img: 'src/themes/sourcebox/source/img/',
   path: 'src/themes/sourcebox'
-}
+};
 
 var bootstrap = {
   js: {
@@ -55,7 +55,7 @@ var bootstrap = {
     src: 'node_modules/bootstrap/less/**/*.less',
     dest: 'src/less/bootstrap/'
   }
-}
+};
 
 /**
  * Compile less files
@@ -67,7 +67,7 @@ gulp.task('less', function() {
     .pipe(prefix('last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR'))
     .pipe(rename('style.min.css'))
     .pipe(minifyCSS())
-    .pipe(gulp.dest(dest.css))
+    .pipe(gulp.dest(dest.css));
 });
 
 /**
@@ -77,7 +77,7 @@ gulp.task('js', function() {
   return gulp.src(src.js)
     .pipe(concat('main.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(dest.js))
+    .pipe(gulp.dest(dest.js));
 });
 
 /**
@@ -95,7 +95,7 @@ gulp.task('copy-bootstrap', function() {
   for (var key in bootstrap) {
     var folder = bootstrap[key];
     gulp.src(folder.src).pipe(gulp.dest(folder.dest));
-  }
+  };
 });
 
 /**
@@ -118,7 +118,7 @@ gulp.task('html', function() {
  * Build the project
  */
 gulp.task('build', function(cb) {
-  return sequence('fonts', 'copy-bootstrap', 'less', 'js', 'images', cb)
+  return sequence('fonts', 'copy-bootstrap', 'less', 'js', 'images', cb);
 });
 
 /**
