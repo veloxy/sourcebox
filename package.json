@@ -27,5 +27,8 @@
     "gulp-sequence": "~0.3.2",
     "gulp-minify-css": "~1.0.0",
     "gulp-util": "^3.0.4"
+  },
+  "dependencies": {
+    "bootstrap": "~3.3.4"
   }
 }

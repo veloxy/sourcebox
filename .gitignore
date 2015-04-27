@@ -2,5 +2,7 @@ build
 node_modules
 npm-debug.log
 src/node_modules
+src/js/bootstrap
+src/less/bootstrap
 src/themes/sourcebox/source/
 src/db.json

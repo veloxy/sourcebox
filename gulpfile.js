@@ -46,6 +46,17 @@ var dest = {
   path: 'src/themes/sourcebox'
 }
 
+var bootstrap = {
+  js: {
+    src: 'node_modules/bootstrap/js/**/*.js',
+    dest: 'src/js/bootstrap/'
+  },
+  less: {
+    src: 'node_modules/bootstrap/less/**/*.less',
+    dest: 'src/less/bootstrap/'
+  }
+}
+
 /**
  * Compile less files
  */
@@ -78,11 +89,20 @@ gulp.task('fonts', function() {
 });
 
 /**
+ * Move fonts to destination directory
+ */
+gulp.task('copy-bootstrap', function() {
+  for (var key in bootstrap) {
+    var folder = bootstrap[key];
+    gulp.src(folder.src).pipe(gulp.dest(folder.dest));
+  }
+});
+
+/**
  * Move images to destination directory
  */
 gulp.task('images', function() {
-  return gulp.src(src.img)
-    .pipe(gulp.dest(dest.img));
+  return gulp.src(src.img).pipe(gulp.dest(dest.img));
 });
 
 
@@ -95,25 +115,24 @@ gulp.task('html', function() {
 });
 
 /**
- * Clean up destination directy
- */
-// gulp.task('cleanup', function () {
-//   return gulp.src(dest.path, {read: false})
-//     .pipe(clean());
-// });
-
-/**
  * Build the project
  */
 gulp.task('build', function(cb) {
-  return sequence('fonts', 'less', 'js', 'images', cb)
+  return sequence('fonts', 'copy-bootstrap', 'less', 'js', 'images', cb)
+});
+
+/**
+ * Watch the files and build where needed
+ */
+gulp.task('watch', function() {
+  gulp.watch([src.less], ['less']);
+  gulp.watch([src.js], ['js']);
+  gulp.watch([src.img], ['images']);
 });
 
 /**
  * Watch file changes and build project
  */
-gulp.task('default', function () {
-  gulp.watch([src.less], ['less']);
-  gulp.watch([src.js], ['js']);
-  gulp.watch([src.img], ['images']);
+gulp.task('default', function(cb) {
+  return sequence('build', 'watch', cb);
 });
