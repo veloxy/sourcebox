@@ -1,5 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/veloxy/Sourcebox/badges/gpa.svg)](https://codeclimate.com/github/veloxy/Sourcebox)
 [![bitHound Score](https://www.bithound.io/github/veloxy/Sourcebox/badges/score.svg)](https://www.bithound.io/github/veloxy/Sourcebox)
+[![Build Status](https://travis-ci.org/veloxy/sourcebox.svg?branch=v0.2.12)](https://travis-ci.org/veloxy/sourcebox)
 
 # Sourcebox (Kevin Vandenborne's Website)
 
