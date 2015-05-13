@@ -1,4 +1,4 @@
-FROM tutum/nginx
+FROM veloxy/nginx-production
 
 MAINTAINER Kevin Vandenborne <kevin.vandenborne@gmail.com>
 
