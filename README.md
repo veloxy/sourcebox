@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/veloxy/sourcebox.svg?branch=v0.2.12)](https://travis-ci.org/veloxy/sourcebox)
 ![Release](https://img.shields.io/github/release/veloxy/sourcebox.svg)
 
-# Sourcebox (Kevin Vandenborne's Website)
+# Sourcebox
 
 This is the source code for my personal website, you can look around but you can not copy. This is only for educational use.
 
