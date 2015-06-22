@@ -11,6 +11,8 @@ var clean     = require('gulp-clean');
 var sequence  = require('gulp-sequence');
 var rename    = require('gulp-rename');
 var minifyCSS = require('gulp-minify-css');
+var coffee    = require('gulp-coffee');
+var gulpif    = require('gulp-if');
 
 /**
  * Source files
@@ -21,11 +23,9 @@ var src = {
     'src/js/libs/jquery.scroll.startstop.js',
     'src/js/bootstrap/collapse.js',
     'src/js/bootstrap/dropdown.js',
-    // 'src/js/libs/three.control.js',
     'src/js/libs/three.stats.js',
     'src/js/libs/three.min.js',
-    'src/js/modules/header.js',
-    'src/js/main.js',
+    'src/js/coffee/**/*.coffee'
   ],
   fonts: [
     'src/fonts/**/*'
@@ -75,6 +75,7 @@ gulp.task('less', function() {
  */
 gulp.task('js', function() {
   return gulp.src(src.js)
+    .pipe(gulpif(/[.]coffee$/, coffee({bare: true})))
     .pipe(concat('main.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest(dest.js));
