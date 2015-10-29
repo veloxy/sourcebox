@@ -17,7 +17,7 @@
       <div class="text">
         <h3>Work</h3>
         <p>I'm currently working at <a href="http://www.yappa.be">Yappa</a>.</p>
-        <p>I'm not available for freelance work at the moment. But you can <a href="">contact me</a> anyway, you never know!</p>
+        <p>I'm not available for freelance work at the moment. But you can <a href="mailto:kevin@sourcebox.be">contact me</a> anyway, you never know!</p>
       </div>
     </div>
   </div>
