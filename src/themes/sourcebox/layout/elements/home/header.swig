@@ -9,6 +9,6 @@
     </div>
   </div>
   <div class="cta">
-    <a href="" class="btn btn-lg btn-contact">Contact me</a>
+    <a href="mailto:kevin@sourcebox.be" class="btn btn-lg btn-contact">Contact me</a>
   </div>
 </div>

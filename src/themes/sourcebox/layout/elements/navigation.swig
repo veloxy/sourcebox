@@ -21,7 +21,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="mailto:kevin@sourcebox.be">Contact</a></li>
       </ul>
     </div>
   </div>
