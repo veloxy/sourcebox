@@ -23,7 +23,7 @@ var src = {
     'src/js/libs/jquery.scroll.startstop.js',
     'src/js/bootstrap/collapse.js',
     'src/js/bootstrap/dropdown.js',
-    'src/js/libs/three.stats.js',
+    // 'src/js/libs/three.stats.js',
     'src/js/libs/three.min.js',
     'src/js/coffee/**/*.coffee'
   ],
