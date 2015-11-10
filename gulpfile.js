@@ -13,6 +13,8 @@ var rename    = require('gulp-rename');
 var minifyCSS = require('gulp-minify-css');
 var coffee    = require('gulp-coffee');
 var gulpif    = require('gulp-if');
+var jade      = require('gulp-jade');
+var webserver = require('gulp-webserver');
 
 /**
  * Source files
@@ -23,7 +25,7 @@ var src = {
     'src/js/libs/jquery.scroll.startstop.js',
     'src/js/bootstrap/collapse.js',
     'src/js/bootstrap/dropdown.js',
-    'src/js/libs/three.stats.js',
+    // 'src/js/libs/three.stats.js',
     'src/js/libs/three.min.js',
     'src/js/coffee/**/*.coffee'
   ],
@@ -31,7 +33,7 @@ var src = {
     'src/fonts/**/*'
   ],
   less: 'src/less/**/*.less',
-  html: 'src/**/*.html',
+  html: 'src/views/*.jade',
   img: 'src/img/*'
 };
 
@@ -39,11 +41,11 @@ var src = {
  * Destination folders
  */
 var dest = {
-  css: 'src/themes/sourcebox/source/css/',
-  js: 'src/themes/sourcebox/source/js/',
-  fonts: 'src/themes/sourcebox/source/fonts/',
-  img: 'src/themes/sourcebox/source/img/',
-  path: 'src/themes/sourcebox'
+  css: 'dist/css/',
+  js: 'dist/js/',
+  fonts: 'dist/fonts/',
+  img: 'dist/img/',
+  path: 'dist'
 };
 
 var bootstrap = {
@@ -112,14 +114,15 @@ gulp.task('images', function() {
  */
 gulp.task('html', function() {
   return gulp.src(src.html)
-    .pipe(gulp.dest(dest.path));
+    .pipe(jade({pretty: true}))
+    .pipe(gulp.dest('dist'))
 });
 
 /**
  * Build the project
  */
 gulp.task('build', function(cb) {
-  return sequence('fonts', 'copy-bootstrap', 'less', 'js', 'images', cb);
+  return sequence('fonts', 'copy-bootstrap', 'less', 'js', 'images', 'html', cb);
 });
 
 /**
@@ -129,11 +132,21 @@ gulp.task('watch', function() {
   gulp.watch([src.less], ['less']);
   gulp.watch([src.js], ['js']);
   gulp.watch([src.img], ['images']);
+  gulp.watch(['src/views/**/*.jade'], ['html']);
 });
 
+/**
+ * Serve the page
+ */
+gulp.task('serve', function() {
+  gulp.src('dist')
+    .pipe(webserver({
+      livereload: true
+    }));
+});
 /**
  * Watch file changes and build project
  */
 gulp.task('default', function(cb) {
-  return sequence('build', 'watch', cb);
+  return sequence('build', 'watch', 'serve', cb);
 });

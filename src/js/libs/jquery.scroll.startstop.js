@@ -1,55 +1,91 @@
-/**
- * Scroll Start Stop for jQuery by Toni Almeida, based in the work of James Padolsey
- * ---
- * @author Toni Almeida (http://promatik.no.sapo.pt)
- * @version 1.0
- * @updated 13-Ago-13
- * @forked James Padolsey (https://github.com/padolsey)
- * ---
- * @info https://github.com/promatik/jQuery-Scroll-StartStop
- */
+// jQuery Scrollstop Plugin v1.2.0
+// https://github.com/ssorallen/jquery-scrollstop
 
-(function(){
-  var special = jQuery.event.special,
-    uid1 = 'D' + (+new Date()),
-    uid2 = 'D' + (+new Date() + 1),
-    mouseDown = false,
-    latency = 300;
+(function (factory) {
+  // UMD[2] wrapper for jQuery plugins to work in AMD or in CommonJS.
+  //
+  // [2] https://github.com/umdjs/umd
+
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery'], factory);
+  } else if (typeof exports === 'object') {
+    // Node/CommonJS
+    module.exports = factory(require('jquery'));
+  } else {
+    // Browser globals
+    factory(jQuery);
+  }
+}(function ($) {
+  // $.event.dispatch was undocumented and was deprecated in jQuery 1.7[1]. It
+  // was replaced by $.event.handle in jQuery 1.9.
+  //
+  // Use the first of the available functions to support jQuery <1.8.
+  //
+  // [1] https://github.com/jquery/jquery-migrate/blob/master/src/event.js#L25
+  var dispatch = $.event.dispatch || $.event.handle;
+
+  var special = $.event.special,
+      uid1 = 'D' + (+new Date()),
+      uid2 = 'D' + (+new Date() + 1);
 
   special.scrollstart = {
-    setup: function() {
+    setup: function(data) {
+      var _data = $.extend({
+        latency: special.scrollstop.latency
+      }, data);
+
       var timer,
-        clearTimer = function(evt) { timer = null; },
-        handler =  function(evt) {
-          if (timer) clearTimeout(timer);
-          else jQuery.event.simulate('scrollstart', this, arguments);
+          handler = function(evt) {
+            var _self = this,
+                _args = arguments;
 
-          timer = setTimeout((mouseDown ? handler : clearTimer), latency);
-        };
+            if (timer) {
+              clearTimeout(timer);
+            } else {
+              evt.type = 'scrollstart';
+              dispatch.apply(_self, _args);
+            }
 
-      jQuery(this).on('scroll', handler).data(uid1, handler);
+            timer = setTimeout(function() {
+              timer = null;
+            }, _data.latency);
+          };
+
+      $(this).bind('scroll', handler).data(uid1, handler);
     },
-    teardown: function(){
-      jQuery(this).off('scroll mousedown mouseup', jQuery(this).data(uid1) );
+    teardown: function() {
+      $(this).unbind('scroll', $(this).data(uid1));
     }
   };
 
   special.scrollstop = {
-    setup: function() {
-      var timer,
-        clearTimer = function(evt) { timer = null; },
-        handler = function(evt) {
-          if (timer) clearTimeout(timer);
-          timer = setTimeout( (mouseDown ? handler : function(){ clearTimer(); jQuery.event.simulate('scrollstop', this, arguments); }), latency);
-        };
+    latency: 250,
+    setup: function(data) {
+      var _data = $.extend({
+        latency: special.scrollstop.latency
+      }, data);
 
-      jQuery(this).on('scroll', handler).data(uid2, handler);
+      var timer,
+          handler = function(evt) {
+            var _self = this,
+                _args = arguments;
+
+            if (timer) {
+              clearTimeout(timer);
+            }
+
+            timer = setTimeout(function() {
+              timer = null;
+              evt.type = 'scrollstop';
+              dispatch.apply(_self, _args);
+            }, _data.latency);
+          };
+
+      $(this).bind('scroll', handler).data(uid2, handler);
     },
     teardown: function() {
-      jQuery(this).off('scroll', jQuery(this).data(uid2) );
+      $(this).unbind('scroll', $(this).data(uid2));
     }
   };
-
-  jQuery(this).on('mousedown', function(evt) { mouseDown = true; }).on('mouseup', function(evt) { mouseDown = false; });
-
-})();
+}));

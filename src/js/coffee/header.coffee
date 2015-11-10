@@ -37,7 +37,7 @@ Header.geometry = ($width, $height, $segmentWith, $segmentHeight) ->
   geometry.normalsNeedUpdate = true;
 
 Header.mesh = () ->
-  mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({
+  mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({
     color: 0xffffff, shading: THREE.FlatShading
   }));
 

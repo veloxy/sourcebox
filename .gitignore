@@ -1,4 +1,4 @@
-build
+dist
 src/node_modules
 src/js/bootstrap
 src/less/bootstrap
