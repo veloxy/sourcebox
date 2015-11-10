@@ -1,3 +1,0 @@
-{% for post in posts %}
-    {{ post.title }}
-{% endfor %}
