@@ -46,7 +46,10 @@ Header.mesh = () ->
 Header.renderer = ($target) ->
   try
     if !renderer
-      renderer = new THREE.WebGLRenderer({antialiasing: true, alpha: true});
+      renderer = new THREE.WebGLRenderer({
+        antialiasing: true,
+        alpha: true
+      });
 
     renderer.setSize(width, height);
 
