@@ -114,7 +114,7 @@ gulp.task('images', function() {
 gulp.task('html', function() {
   return gulp.src(src.html)
     .pipe(jade({pretty: true}))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist'));
 });
 
 /**
