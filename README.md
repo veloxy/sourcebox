@@ -7,6 +7,8 @@
 
 This is the source code for my personal website, you can look around but you can not copy. This is only for educational use.
 
+![Preview image](docs/img/preview.png)
+
 ## Requirements
 
 - Node Package Manager (NPM)

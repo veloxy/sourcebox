@@ -50,6 +50,7 @@
 @import "bootstrap/responsive-utilities.less";
 
 @import "../fonts/portfolio-icons/styles.css";
+@import "../css/libs/prism.css";
 
 @import "custom/variables.less";
 @import "custom/fonts.less";
@@ -63,6 +64,7 @@
 @import "custom/footer.less";
 @import "custom/animation.less";
 @import "custom/text.less";
+@import "custom/code.less";
 
 .skills {
   .container();
@@ -87,6 +89,37 @@
         text-align: left;
       }
     }
+  }
+}
+
+.blog-post {
+  .container();
+
+  max-width: 700px;
+  font-size: 21px;
+  padding: 40px 20px;
+  margin-bottom: 60px;
+
+  p {
+    font-weight: 400;
+    margin-bottom: 29px;
+  }
+
+  blockquote {
+    font-size: 21px;
+    border-left: 5px solid @secondary-color;
+  }
+
+  h1, h2, h3, h4 {
+    margin-bottom: 29px;
+  }
+
+  pre, ul, ol {
+    margin-bottom: 20px;
+  }
+
+  #disqus_thread {
+    margin-top: 60px;
   }
 }
 
@@ -126,7 +159,7 @@
   }
 
   .row {
-  .container();
+    .container();
     margin-bottom: 60px;
   }
 }

@@ -10,6 +10,7 @@
 
   canvas {
     position: absolute;
+    background-color: @primary-color;
   }
 
   .header-text {
@@ -55,6 +56,27 @@
         }
       }
     }
+  }
+
+  &.header-small {
+
+    &.fallback {
+      background-image: url('../img/header.jpg');
+      background-position: center bottom;
+      background-size: 120%;
+      background-repeat: no-repeat;
+    }
+
+    .header-text {
+      padding: 20px 0 20px;
+
+      h1 {
+        margin-bottom: 20px;
+        font-size: 30px;
+      }
+    }
+
+    border-bottom: 4px solid @secondary-color;
   }
 }
 
