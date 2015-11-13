@@ -48,8 +48,7 @@ Header.renderer = ($target) ->
     if !renderer
       renderer = new THREE.WebGLRenderer({
         antialiasing: true,
-        alpha: true,
-        # preserveDrawingBuffer: true
+        alpha: true
       });
 
     renderer.setSize(width, height);
