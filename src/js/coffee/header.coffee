@@ -125,8 +125,8 @@ Header.lights = () ->
   scene.add(pointLight);
 
 Header.calculateSize = () ->
-  width  = document.getElementById('header').offsetWidth;
-  height = $('.header-text').outerHeight();
+  width  = $('.js-header-canvas').width();
+  height = $('.js-header-canvas-height').outerHeight();
 
 Header.animate = () ->
   if animationEnabled
