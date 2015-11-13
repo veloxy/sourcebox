@@ -7,7 +7,6 @@ var plumber   = require('gulp-plumber');
 var less      = require('gulp-less');
 var uglify    = require('gulp-uglify');
 var concat    = require('gulp-concat');
-var clean     = require('gulp-clean');
 var sequence  = require('gulp-sequence');
 var rename    = require('gulp-rename');
 var minifyCSS = require('gulp-minify-css');
