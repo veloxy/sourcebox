@@ -70,7 +70,7 @@ gulp.task('less', ['html'], function() {
     .pipe(prefix('last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR'))
     .pipe(rename('style.min.css'))
     .pipe(uncss({
-      html: ['dist/*.html'],
+      html: ['dist/**/*.html'],
       ignore: [/\w\.in/,
         ".fade",
         ".collapse",
@@ -138,7 +138,7 @@ gulp.task('images', function() {
  * Move html files to destination directory
  */
 gulp.task('html', function() {
-  return gulp.src(src.html)
+  return gulp.src(['src/views/**/*.jade', '!src/views/elements{,/**}'])
     .pipe(jade({pretty: true}))
     .pipe(gulp.dest('dist'));
 });
