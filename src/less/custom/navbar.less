@@ -28,10 +28,13 @@
   .navbar-nav {
     > li {
       &.active > a,
-      &.active > a:hover,
-      > a:hover {
+      &.active > a:hover {
         background-color: @primary-color;
         color: @primary-text-color;
+      }
+      > a:hover {
+        color: @primary-text-color;
+        background-color: @secondary-color;
       }
       > a {
         color: @primary-text-color;

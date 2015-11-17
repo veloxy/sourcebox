@@ -14,6 +14,8 @@ var coffee    = require('gulp-coffee');
 var gulpif    = require('gulp-if');
 var jade      = require('gulp-jade');
 var webserver = require('gulp-webserver');
+var zip       = require('gulp-zip');
+var uncss     = require('gulp-uncss');
 
 /**
  * Source files
@@ -32,7 +34,7 @@ var src = {
     'src/fonts/**/*'
   ],
   less: 'src/less/**/*.less',
-  html: 'src/views/*.jade',
+  html: 'src/views/**/*.jade',
   img: 'src/img/*'
 };
 
@@ -61,12 +63,36 @@ var bootstrap = {
 /**
  * Compile less files
  */
-gulp.task('less', function() {
+gulp.task('less', ['html'], function() {
   return gulp.src('src/less/style.less')
     .pipe(plumber())
     .pipe(less())
     .pipe(prefix('last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR'))
     .pipe(rename('style.min.css'))
+    .pipe(uncss({
+      html: ['dist/**/*.html'],
+      ignore: [/\w\.in/,
+        ".fade",
+        ".collapse",
+        ".collapsing",
+        /(#|\.)navbar(\-[a-zA-Z]+)?/,
+        /(#|\.)dropdown(\-[a-zA-Z]+)?/,
+        /(#|\.)(open)/,
+        ".modal",
+        ".modal.fade.in",
+        ".modal-dialog",
+        ".modal-document",
+        ".modal-scrollbar-measure",
+        ".modal-backdrop.fade",
+        ".modal-backdrop.in",
+        ".modal.fade.modal-dialog",
+        ".modal.in.modal-dialog",
+        ".modal-open",
+        ".in",
+        ".modal-backdrop",
+        /(.*)canvas(.*)/
+      ]
+    }))
     .pipe(minifyCSS())
     .pipe(gulp.dest(dest.css));
 });
@@ -112,7 +138,7 @@ gulp.task('images', function() {
  * Move html files to destination directory
  */
 gulp.task('html', function() {
-  return gulp.src(src.html)
+  return gulp.src(['src/views/**/*.jade', '!src/views/elements{,/**}'])
     .pipe(jade({pretty: true}))
     .pipe(gulp.dest('dist'));
 });
@@ -140,9 +166,17 @@ gulp.task('watch', function() {
 gulp.task('serve', function() {
   gulp.src('dist')
     .pipe(webserver({
+      host: 'localhost',
       livereload: true
     }));
 });
+
+gulp.task('release', ['build'], function () {
+  return gulp.src('dist/**/*')
+    .pipe(zip('archive.zip'))
+    .pipe(gulp.dest('./'));
+});
+
 /**
  * Watch file changes and build project
  */

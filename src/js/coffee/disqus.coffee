@@ -1,6 +1,11 @@
 $ ->
   isInView = (elem) ->
     $elem = $(elem);
+
+    if !$elem.length
+      return;
+
+
     $window = $(window);
 
     docViewTop = $window.scrollTop();

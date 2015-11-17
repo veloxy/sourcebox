@@ -1,5 +1,6 @@
 // Core variables and mixins
 @import "bootstrap/variables.less";
+@import "custom/variables.less";
 @import "bootstrap/mixins.less";
 
 // Reset and dependencies
@@ -24,7 +25,7 @@
 @import "bootstrap/navs.less";
 @import "bootstrap/navbar.less";
 // @import "bootstrap/breadcrumbs.less";
-// @import "bootstrap/pagination.less";
+@import "bootstrap/pagination.less";
 // @import "bootstrap/pager.less";
 @import "bootstrap/labels.less";
 // @import "bootstrap/badges.less";
@@ -52,7 +53,7 @@
 @import "../fonts/portfolio-icons/styles.css";
 @import "../css/libs/prism.css";
 
-@import "custom/variables.less";
+
 @import "custom/fonts.less";
 @import "custom/type.less";
 @import "custom/navbar.less";
@@ -88,6 +89,69 @@
         line-height: 34px;
         text-align: left;
       }
+    }
+  }
+}
+
+.blog-overview {
+  .container();
+
+  max-width: 700px;
+  padding: 60px 20px;
+  margin-bottom: 0;
+
+  nav {
+    text-align: center;
+    .pagination > li {
+      &> a, > span {
+        border: none;
+        color: @text-color;
+      }
+      &.active a {
+        border: 1px solid @link-color;
+        background-color: @link-color;
+        color: #fff;
+      }
+    }
+  }
+
+  article {
+    font-size: 21px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    header {
+      padding-bottom: 15px;
+      h2 {
+        display: inline-block;
+        padding-top: 0;
+        margin-top: 0;
+
+        a {
+          font-size: 30px;
+          color: @text-color;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+      time {
+        font-size: 16px;
+        color: @gray-light;
+        float: right;
+      }
+    }
+
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    a {
+      font-size: 16px;
     }
   }
 }
@@ -160,7 +224,6 @@
 
   .row {
     .container();
-    margin-bottom: 60px;
   }
 }
 
