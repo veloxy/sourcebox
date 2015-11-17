@@ -14,6 +14,7 @@ var coffee    = require('gulp-coffee');
 var gulpif    = require('gulp-if');
 var jade      = require('gulp-jade');
 var webserver = require('gulp-webserver');
+var zip       = require('gulp-zip');
 
 /**
  * Source files
@@ -32,7 +33,7 @@ var src = {
     'src/fonts/**/*'
   ],
   less: 'src/less/**/*.less',
-  html: 'src/views/*.jade',
+  html: 'src/views/**/*.jade',
   img: 'src/img/*'
 };
 
@@ -140,9 +141,17 @@ gulp.task('watch', function() {
 gulp.task('serve', function() {
   gulp.src('dist')
     .pipe(webserver({
+      host: 'localhost',
       livereload: true
     }));
 });
+
+gulp.task('release', ['build'], function () {
+  return gulp.src('dist/**/*')
+    .pipe(zip('archive.zip'))
+    .pipe(gulp.dest('./'));
+});
+
 /**
  * Watch file changes and build project
  */
