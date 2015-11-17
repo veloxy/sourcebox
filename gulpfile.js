@@ -15,6 +15,7 @@ var gulpif    = require('gulp-if');
 var jade      = require('gulp-jade');
 var webserver = require('gulp-webserver');
 var zip       = require('gulp-zip');
+var uncss     = require('gulp-uncss');
 
 /**
  * Source files
@@ -62,12 +63,36 @@ var bootstrap = {
 /**
  * Compile less files
  */
-gulp.task('less', function() {
+gulp.task('less', ['html'], function() {
   return gulp.src('src/less/style.less')
     .pipe(plumber())
     .pipe(less())
     .pipe(prefix('last 2 versions', '> 1%', 'ie 8', 'Android 2', 'Firefox ESR'))
     .pipe(rename('style.min.css'))
+    .pipe(uncss({
+      html: ['dist/*.html'],
+      ignore: [/\w\.in/,
+        ".fade",
+        ".collapse",
+        ".collapsing",
+        /(#|\.)navbar(\-[a-zA-Z]+)?/,
+        /(#|\.)dropdown(\-[a-zA-Z]+)?/,
+        /(#|\.)(open)/,
+        ".modal",
+        ".modal.fade.in",
+        ".modal-dialog",
+        ".modal-document",
+        ".modal-scrollbar-measure",
+        ".modal-backdrop.fade",
+        ".modal-backdrop.in",
+        ".modal.fade.modal-dialog",
+        ".modal.in.modal-dialog",
+        ".modal-open",
+        ".in",
+        ".modal-backdrop",
+        /(.*)canvas(.*)/
+      ]
+    }))
     .pipe(minifyCSS())
     .pipe(gulp.dest(dest.css));
 });
