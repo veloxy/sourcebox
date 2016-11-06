@@ -117,10 +117,47 @@ hr {
     font-weight: bold;
   }
 
+  .work-items {
+    margin: 60px 0 40px 0;
+  }
+
   .work-item {
-    margin: 60px 0 0 0;
-    padding: 0 15px 60px;
-    border-bottom: 1px solid #eeeeee;
+    &:last-child {
+      .work-right-col {
+        padding-bottom: 20px;
+      }
+    }
+  }
+
+  .work-item {
+    margin: 0;
+    padding: 0 15px 0;
+
+    .work-right-col {
+      padding: 0 15px 120px 40px;
+      border-left: 1px dashed #ccc;
+
+      @media (max-width: @screen-md) {
+        padding-left: 15px;
+        border-left: none;
+      }
+
+      .work-time-line-dot {
+        display: block;
+        width: 21px;
+        height: 21px;
+        background-color: #FFFFFF;
+        border: 3px solid @primary-highlight-color;
+        border-radius: 20px;
+        position: absolute;
+        left: -11px;
+        top: 75px;
+
+        @media (max-width: @screen-md) {
+          display: none;
+        }
+      }
+    }
 
     &:last-child {
       border-bottom: none;
