@@ -39,20 +39,26 @@
 }
 
 .icon-twitter:before {
-  content: "a";
+  content: "\61";
 }
 .icon-linkedin:before {
-  content: "c";
+  content: "\63";
 }
 .icon-github:before {
-  content: "d";
+  content: "\64";
 }
 .icon-wrench:before {
-  content: "b";
+  content: "\62";
 }
 .icon-code:before {
-  content: "e";
+  content: "\65";
 }
 .icon-crop:before {
-  content: "f";
+  content: "\66";
+}
+.icon-link:before {
+  content: "\67";
+}
+.icon-globe-world:before {
+  content: "\68";
 }
