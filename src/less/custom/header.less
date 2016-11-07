@@ -12,16 +12,17 @@
     position: absolute;
     background-color: @primary-color;
   }
+  &:not(.header-small) .header-text {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+  }
 
   .header-text {
     width: 100%;
     color: @primary-text-color;
 
     padding: 40px 0 100px;
-
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
 
     .container {
       position: relative;
