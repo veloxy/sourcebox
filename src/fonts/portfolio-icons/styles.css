@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "portfolio-icons";
-  src:url("fonts/portfolio-icons.eot");
-  src:url("fonts/portfolio-icons.eot?#iefix") format("embedded-opentype"),
-    url("fonts/portfolio-icons.woff") format("woff"),
-    url("fonts/portfolio-icons.ttf") format("truetype"),
-    url("fonts/portfolio-icons.svg#portfolio-icons") format("svg");
+  src:url("https://cdn.sourcebox.be/fonts/portfolio-icons/fonts/portfolio-icons.eot");
+  src:url("https://cdn.sourcebox.be/fonts/portfolio-icons/fonts/portfolio-icons.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.sourcebox.be/fonts/portfolio-icons/fonts/portfolio-icons.woff") format("woff"),
+    url("https://cdn.sourcebox.be/fonts/portfolio-icons/fonts/portfolio-icons.ttf") format("truetype"),
+    url("https://cdn.sourcebox.be/fonts/portfolio-icons/fonts/portfolio-icons.svg#portfolio-icons") format("svg");
   font-weight: normal;
   font-style: normal;
 
