@@ -63,6 +63,10 @@ Header.renderer = ($target) ->
       $target.insertBefore(renderer.domElement, $target.firstChild);
 
       if debug then $target.appendChild(stats.domElement);
+
+    if document.getElementsByTagName('canvas')[0]
+      document.getElementsByTagName('canvas')[0].style.position = "absolute";
+
   catch exception
     return false;
 
