@@ -208,7 +208,7 @@ hr {
 .blog-overview {
   .container();
 
-  max-width: 700px;
+  max-width: 780px;
   padding: 60px 20px;
   margin-bottom: 0;
 
@@ -269,7 +269,7 @@ hr {
 .blog-post {
   .container();
 
-  max-width: 700px;
+  max-width: 780px;
   font-size: 20px;
   padding: 40px 20px;
   margin-bottom: 60px;
@@ -277,30 +277,46 @@ hr {
   p {
     font-weight: 400;
     margin-bottom: 29px;
+    line-height: 1.58;
+
+    code {
+      font-size: 20px;
+      background-color: @gray-lighter;
+      padding: 0 10px;
+    }
   }
 
   blockquote {
     font-size: 20px;
     border-left: 5px solid @secondary-color;
+    margin: 40px 0;
+    padding: 30px 20px;
+    font-style: italic;
+    background-color: lighten(@secondary-color, 32%);
   }
 
-  h1, h2, h3, h4 {
-    margin-bottom: 29px;
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 30px;
+    font-weight: bold;
   }
 
   h2 {
+    margin-top: 60px;
     font-size: 34px;
   }
 
   h3 {
+    margin-top: 50px;
     font-size: 32px;
   }
 
   h4 {
+    margin-top: 40px;
     font-size: 30px;
   }
 
   h5 {
+    margin-top: 30px;
     font-size: 28px;
   }
 
@@ -328,8 +344,15 @@ hr {
   }
 
   img {
-    max-width: 100%;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    max-width: 980px;
+    padding: 20px 50px;
+    min-width: 980px;
+    margin: 20px -100px 20px -100px;
+    border: 1px solid #d6d6d6;
+  }
+
+  .highlight pre code {
+    font-size: 14px;
   }
 
   #disqus_thread {
