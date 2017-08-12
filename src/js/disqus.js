@@ -1,4 +1,4 @@
-let isInView = function(elem) {
+let isInView = function(elem, margin) {
   let $elem = document.getElementById(elem);
 
   if ($elem === null) {
@@ -8,14 +8,14 @@ let isInView = function(elem) {
   let docViewTop = window.scrollY;
   let docViewBottom = docViewTop + window.innerHeight;
 
-  let elemTop = $elem.offsetTop;
+  let elemTop = $elem.offsetTop - margin;
   let elemBottom = elemTop + $elem.offsetHeight;
 
   return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 };
 
 let check = function() {
-  if (isInView('disqus_thread')) {
+  if (isInView('disqus_thread', 500)) {
     document.removeEventListener('scroll', check);
 
     let disqus_config = function() {
