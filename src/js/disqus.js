@@ -17,13 +17,6 @@ let isInView = function(elem, margin) {
 let check = function() {
   if (isInView('disqus_thread', 500)) {
     document.removeEventListener('scroll', check);
-    
-    let url = 'https://sourcebox.be' + location.pathname;
-
-    let disqus_config = function() {
-      this.page.url = url;
-      this.page.identifier = url;
-    };
 
     (function() {
       let d = document;
@@ -33,6 +26,13 @@ let check = function() {
       (d.head || d.body).appendChild(s);
     })();
   }
+};
+
+
+let disqus_config = function() {
+  let url = 'https://sourcebox.be' + location.pathname;
+  this.page.url = url;
+  this.page.identifier = url;
 };
 
 document.addEventListener('scroll', check);
