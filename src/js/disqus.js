@@ -17,10 +17,12 @@ let isInView = function(elem, margin) {
 let check = function() {
   if (isInView('disqus_thread', 500)) {
     document.removeEventListener('scroll', check);
+    
+    let url = 'https://sourcebox.be' + location.pathname;
 
     let disqus_config = function() {
-      this.page.url = window.location.href;
-      this.page.identifier = window.location.href;
+      this.page.url = url;
+      this.page.identifier = url;
     };
 
     (function() {
