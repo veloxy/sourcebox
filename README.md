@@ -1,5 +1,4 @@
 [![Code Climate](https://codeclimate.com/github/veloxy/Sourcebox/badges/gpa.svg)](https://codeclimate.com/github/veloxy/Sourcebox)
-[![bitHound Score](https://www.bithound.io/github/veloxy/Sourcebox/badges/score.svg)](https://www.bithound.io/github/veloxy/Sourcebox)
 [![Build Status](https://travis-ci.org/veloxy/sourcebox.svg?branch=master)](https://travis-ci.org/veloxy/sourcebox)
 ![Tag](https://img.shields.io/github/tag/veloxy/sourcebox.svg)
 
